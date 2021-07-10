@@ -1,12 +1,13 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 //configuration
 import { BACKDROP_SIZE, IMAGE_BASE_URL, POSTER_SIZE } from "../config";
 
-//components
-
 //hooks
 import { useHomeFetch } from "../hooks/useHomeFetch";
+
+//components
 import Spinner from "./Spinner";
 import HeroImage from "./HeroImage";
 import Grid from "./Grid";
@@ -22,8 +23,8 @@ const Home = () => {
     useHomeFetch();
   const { results, page, total_pages } = state;
 
-  if(error){
-    return <div>Something went wrong</div>
+  if (error) {
+    return <div>Something went wrong</div>;
   }
 
   return (
@@ -40,20 +41,24 @@ const Home = () => {
         header={searchTerm ? `Results for: ${searchTerm}` : "Popular Movies"}
       >
         {results.map((movie) => (
+          <Link to={`/movie/${movie.id}`}>
           <Thumb
             key={movie.id}
             clickable={true}
             image={
               movie.poster_path
                 ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
-                : null
+                : NoImage
             }
             movieId={movie.id}
           />
+          </Link>
         ))}
       </Grid>
       {loading && <Spinner />}
-      {page < total_pages && !loading && <Button text="Load More" callback={()=> setIsLoadingMore(true)} />}
+      {page < total_pages && !loading && (
+        <Button text="Load More" callback={() => setIsLoadingMore(true)} />
+      )}
     </>
   );
 };
