@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 //configuration
 import { BACKDROP_SIZE, IMAGE_BASE_URL, POSTER_SIZE } from "../config";
@@ -7,6 +7,7 @@ import { BACKDROP_SIZE, IMAGE_BASE_URL, POSTER_SIZE } from "../config";
 
 //hooks
 import { useHomeFetch } from "../hooks/useHomeFetch";
+import Spinner from "./Spinner";
 import HeroImage from "./HeroImage";
 import Grid from "./Grid";
 import Thumb from "./Thumb";
@@ -40,7 +41,7 @@ const Home = () => {
             movieId={movie.id}
           />
         ))}
-      </Grid>
+      </Grid>      
     </>
   );
 };
