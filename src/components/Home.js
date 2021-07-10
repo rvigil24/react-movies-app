@@ -12,13 +12,19 @@ import HeroImage from "./HeroImage";
 import Grid from "./Grid";
 import Thumb from "./Thumb";
 import SearchBar from "./SearchBar";
+import Button from "./Button";
 
 //image
 import NoImage from "../images/no_image.jpg";
 
 const Home = () => {
-  const { state, loading, error, setSearchTerm, searchTerm } = useHomeFetch();
-  const { results } = state;
+  const { state, loading, error, setSearchTerm, searchTerm, setIsLoadingMore } =
+    useHomeFetch();
+  const { results, page, total_pages } = state;
+
+  if(error){
+    return <div>Something went wrong</div>
+  }
 
   return (
     <>
@@ -46,6 +52,8 @@ const Home = () => {
           />
         ))}
       </Grid>
+      {loading && <Spinner />}
+      {page < total_pages && !loading && <Button text="Load More" callback={()=> setIsLoadingMore(true)} />}
     </>
   );
 };
