@@ -14,7 +14,7 @@ const SearchBar = ({ setSearchTerm }) => {
       return;
     }
     setSearchTerm(state);
-  }, [state]);
+  }, [state, setSearchTerm]);
 
   const handleOnChange = (e) => {
     setState(e.target.value);

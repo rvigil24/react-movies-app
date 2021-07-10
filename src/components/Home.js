@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
 //configuration
 import { BACKDROP_SIZE, IMAGE_BASE_URL, POSTER_SIZE } from "../config";
@@ -41,7 +40,6 @@ const Home = () => {
         header={searchTerm ? `Results for: ${searchTerm}` : "Popular Movies"}
       >
         {results.map((movie) => (
-          <Link to={`/movie/${movie.id}`}>
           <Thumb
             key={movie.id}
             clickable={true}
@@ -52,7 +50,6 @@ const Home = () => {
             }
             movieId={movie.id}
           />
-          </Link>
         ))}
       </Grid>
       {loading && <Spinner />}

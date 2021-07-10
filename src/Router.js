@@ -1,5 +1,5 @@
 //router
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 //pages
 import Home from "./components/Home";
@@ -8,13 +8,11 @@ import NotFound from "./components/NotFound";
 
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/movie/:movieId" component={Movies} />
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/movie/:movieId" component={Movies} />
+      <Route path="*" component={NotFound} />
+    </Switch>
   );
 };
 

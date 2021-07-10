@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 
 //styles
 import { GlobalStyle } from "./GlobalStyle";
@@ -11,12 +12,13 @@ import Header from "./components/Header";
 
 function App() {
   return (
-
-    <div className="App">
-      <Header />
+    <BrowserRouter>
+      <div className="App">
+        <Header />
         <Router />
-      <GlobalStyle />
-    </div>
+        <GlobalStyle />
+      </div>
+    </BrowserRouter>
   );
 }
 

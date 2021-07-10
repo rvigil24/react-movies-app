@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import API from "../API";
 
@@ -21,14 +21,13 @@ export const useHomeFetch = () => {
     fetchMovies(1, searchTerm);
   }, [searchTerm]);
 
-  useEffect( () => {
-    if(!isLoadingMore){
+  useEffect(() => {
+    if (!isLoadingMore) {
       return;
     }
-    
     fetchMovies(state.page + 1, searchTerm);
     setIsLoadingMore(false);
-  }, [isLoadingMore, searchTerm] );
+  }, [isLoadingMore, searchTerm, state.page]);
 
   const fetchMovies = async (page, searchTerm = "") => {
     try {
