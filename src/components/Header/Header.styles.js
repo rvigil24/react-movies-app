@@ -15,10 +15,10 @@ export const Content = styled.div`
 `;
 
 export const ReactLogoImg = styled.img`
-  width: 100px;
+  width: 125px;
 
   @media screen and (max-width: 500px) {
-    width: 150px;
+    width: 100px;
   }
 `;
 
