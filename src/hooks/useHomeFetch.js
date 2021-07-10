@@ -11,6 +11,7 @@ const initialState = {
 
 export const useHomeFetch = () => {
   const [state, setState] = useState(initialState);
+  const [searchTerm, setSearchTerm] = useState("")
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -38,5 +39,6 @@ export const useHomeFetch = () => {
     state,
     loading,
     error,
+    setSearchTerm
   };
 };
