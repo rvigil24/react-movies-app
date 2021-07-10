@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 //configuration
-import { BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
+import { BACKDROP_SIZE, IMAGE_BASE_URL, POSTER_SIZE } from "../config";
 
 //components
 
@@ -9,6 +9,7 @@ import { BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 import { useHomeFetch } from "../hooks/useHomeFetch";
 import HeroImage from "./HeroImage";
 import Grid from "./Grid";
+import Thumb from "./Thumb";
 
 //image
 import NoImage from "../images/no_image.jpg";
@@ -28,7 +29,16 @@ const Home = () => {
       ) : null}
       <Grid header="Popular Movies">
         {results.map((movie) => (
-          <div key={movie.id}>{movie.title}</div>
+          <Thumb
+            key={movie.id}
+            clickable={true}
+            image={
+              movie.poster_path
+                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                : null
+            }
+            movieId={movie.id}
+          />
         ))}
       </Grid>
     </>
