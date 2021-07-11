@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 //images
 import SomethingWrongImg from "../images/something-wrong.png";
@@ -35,12 +35,12 @@ const Content = styled.div`
   }
 `;
 
-const NotFound = () => {
+const SomethingWentWrong = () => {
   return (
     <Wrapper>
       <Content>
         <img src={SomethingWrongImg} alt="something went wrong" />
-        <h1>Page not found</h1>
+        <h1>Something Went Wrong</h1>
         <h2>
           <Link to="/">Go back home</Link>
         </h2>
@@ -49,4 +49,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default SomethingWentWrong;
