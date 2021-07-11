@@ -1,7 +1,7 @@
 import React from "react";
 
 //config
-// import { IMAGE_BASE_URL, POSTER_SIZE } from "../config";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../config";
 
 //components
 import Spinner from "./Spinner";
@@ -9,9 +9,11 @@ import SomethingWentWrong from "./SomethingWentWrong";
 import BreadCrumb from "./BreadCrumb";
 import MovieInfo from "./MovieInfo";
 import MovieInfoBar from "./MovieInfoBar";
+import Actor from "./Actor";
+import Grid from "./Grid";
 
 //no image fallback
-// import NoImage from "../images/no_image.jpg";
+import NoImage from "../images/no_image.jpg";
 
 //hooks
 import { useMovieFetch } from "../hooks/useMovieFetch";
@@ -42,6 +44,20 @@ const Movie = ({ match: { params } }) => {
         budget={movie.budget}
         revenue={movie.revenue}
       />
+      <Grid header="Actors">
+        {movie?.actors?.map((actor) => (
+          <Actor
+            key={actor.credit_id}
+            name={actor.name}
+            character={actor.character}
+            imgUrl={
+              actor.profile_path
+                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
+                : NoImage
+            }
+          />
+        ))}
+      </Grid>
     </>
   );
 };
