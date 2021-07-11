@@ -5,7 +5,9 @@ import React from "react";
 
 //components
 import Spinner from "./Spinner";
+import SomethingWentWrong from "./SomethingWentWrong";
 import BreadCrumb from "./BreadCrumb";
+import MovieInfo from "./MovieInfo";
 
 //no image fallback
 // import NoImage from "../images/no_image.jpg";
@@ -15,19 +17,20 @@ import { useMovieFetch } from "../hooks/useMovieFetch";
 
 const Movie = ({ match: { params } }) => {
   const { movieId } = params;
-  const { state, loading, error } = useMovieFetch(movieId);
-  console.log(state);
+  const { state: movie, loading, error } = useMovieFetch(movieId);
+  
   if (loading)
     return (
       <>
         <Spinner />
       </>
     );
-  if (error) return <div>Something went wrong</div>;
+  if (error) return <><SomethingWentWrong/></>
 
   return (
     <>
-      <BreadCrumb movieTitle={state.original_title} />
+      <BreadCrumb movieTitle={movie.original_title} />
+      <MovieInfo movie={movie} />
     </>
   );
 };
